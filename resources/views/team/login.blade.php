@@ -18,7 +18,7 @@
 		            <div class="form-group {{ $errors->has('team_name') ? 'has-error' : '' }}">
                         <label for="team-name" class="control-label">Team Name</label>
 												@if(env('ONE_TEAM_MODE') == true)
-                            <input type="text" name="team_name" class="form-control" id="team-name" value="{{$team_name}}"  readonly autocomplete="on" required>
+                            <input type="text" name="team_name" class="form-control" id="team-name" value="{{env('TEAM_NAME')}}"  readonly autocomplete="on" required>
                         @else
                             <input type="text" name="team_name" class="form-control" id="team-name" autocomplete="on" required>
                         @endif
