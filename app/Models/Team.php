@@ -102,7 +102,9 @@ class Team extends Model
      */
     public function activity()
     {
-        return $this->hasMany(Activity::class, 'team_id', 'id')->with(['user', 'subject' => function ($query) {
+        return $this->hasMany(Activity::class, 'team_id', 'id')->with(['user'=> function ($query) {
+            $query->withTrashed();
+        }, 'subject' => function ($query) {
             $query->withTrashed();
         }])->latest();
     }
