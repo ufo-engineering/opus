@@ -97,6 +97,7 @@ Route::group(['prefix' => 'teams', 'middleware' => 'auth'], function () {
     Route::get('{team_slug}', 'UserController@dashboard')->name('dashboard');
     Route::post('{team_slug}/invite', 'InviteController@store')->name('invites.create');
     Route::delete('{id}', 'TeamController@destroy')->name('teams.destroy');
+    Route::delete('{id}', 'UserController@destroyUser')->name('user.destroy');
     Route::get('{team_slug}/members', 'TeamController@getMembers')->name('teams.members');
     Route::get('{team_slug}/wiki', 'WikiController@create')->name('teams.wiki.create');
     Route::patch('{team_slug}', 'TeamController@update')->name('teams.update');

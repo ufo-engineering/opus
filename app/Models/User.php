@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Fenos\Notifynder\Traits\NotifableLaravel53 as NotifableTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class User
@@ -17,7 +18,7 @@ use Fenos\Notifynder\Traits\NotifableLaravel53 as NotifableTrait;
  */
 class User extends Authenticatable
 {
-    use Notifiable, Sluggable, NotifableTrait;
+    use Notifiable, Sluggable, NotifableTrait, SoftDeletes;
 
     /**
      * Return the sluggable configuration array for this model.
@@ -320,5 +321,10 @@ class User extends Authenticatable
         return $this->find($userId)->update([
             'profile_image' => $image,
         ]);
+    }
+
+    public function deleteUser($id)
+    {
+        return $this->find($id)->forceDelete();
     }
 }
