@@ -49,6 +49,10 @@
                                                 <div class="text-muted" style="font-family: lato; font-size: 13px;"><i class="fa fa-envelope-o fa-fw"></i> {{ $member->email }}</div>
                                             </div>
                                         </div>
+
+                                        <div>
+                                            <a href="{{ route('user.destroy', [$member->id]) }}" data-method="delete" data-confirm="Are you sure?" id="remove-user" data-toggle="tooltip" data-placement="top" title="Remove User"><i class="fa fa-trash-o fa-fw"></i></a>
+                                        </div>
                                     </div>
                                 @endforeach
                                 <div class="text-center">

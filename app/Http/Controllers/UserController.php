@@ -236,6 +236,21 @@ class UserController extends Controller
     }
 
     /**
+     * Delete a user.
+     *
+     * @param \App\Models\User $user
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroyUser(User $user,$id)
+    {
+        $this->user->where('id', '=', $id)->delete();
+
+        return redirect()->back()->with([
+            'alert'      => 'User successfully deleted.',
+            'alert_type' => 'success',
+        ]);
+    }
+    /**
      * Logout user.
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
